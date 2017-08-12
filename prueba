@@ -1,0 +1,29 @@
+float[] aleatorioX = new float[100];
+float[] aleatorioY = new float[100];
+float[] movimiento = new float[100];
+float[] desplazamiento = new float[100];
+float[] colores = new float [255];
+
+void setup(){
+ size(400,400);
+  for (int i = 0; i<100; i++){
+  aleatorioX[i] = random(400);
+  aleatorioY[i] = random(400);
+  movimiento[i] = -1 + random(2);
+  desplazamiento[i] = 0;
+  colores[i] = random (255);
+   //fill(colores[i+1],colores[i+4],colores[i+10]);
+  }
+}
+
+void draw(){
+  background(0);
+  noStroke();
+  for (int i=100; i>0; i--){
+    //fill(random(255),random(255),random(255));
+    fill(colores[i+6],colores[i+10],colores[i+5]);
+    desplazamiento[i-1] += movimiento[i-1];
+    float posicionx = aleatorioX[i-1] + desplazamiento[i-1];
+    ellipse(posicionx,aleatorioY[i-1],i,i);
+  }
+}
